@@ -32,12 +32,14 @@ class CategoriesController < ApplicationController
     if @category.update(name: params[:category][:name], category_id: params[:category][:category_id])
       redirect_to category_url(@category)
     else 
-      render :new status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end 
   end 
 
   def destroy 
     @category = Category.find(params[:id])
+    @category.destroy 
+    redirect_to root_path status: :see_other
   end 
 
   private 

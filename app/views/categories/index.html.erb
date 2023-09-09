@@ -1,0 +1,27 @@
+<h3> All Categories </h3>
+
+<div class="row ">
+  <div class="col col-auto me-auto">
+  </div>
+  <div class="col col-auto">
+    <%= link_to "Add New Category", new_category_url, class: "btn btn-outline-primary" %>
+  </div>
+</div>
+
+
+<table class="table table-bordered mt-2">
+  <thead>
+      <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Category Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @category.each do |category| %>
+    <tr>
+      <td><%= link_to category.name, category %></td>
+      <td><%= category.category.name if category.category %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
